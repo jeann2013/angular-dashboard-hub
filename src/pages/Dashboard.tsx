@@ -64,7 +64,7 @@ export default function Dashboard() {
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
               <Zap className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground">SolarApp</span>
+            <span className="text-xl font-bold text-foreground">EasyPay</span>
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden text-right md:block">

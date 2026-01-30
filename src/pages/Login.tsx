@@ -13,8 +13,8 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   
   // Login form state
-  const [loginEmail, setLoginEmail] = useState('admin@example.com');
-  const [loginPassword, setLoginPassword] = useState('password123');
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
   
   // Register form state
   const [registerName, setRegisterName] = useState('');
@@ -31,7 +31,8 @@ export default function Login() {
     await handleRegister({ 
       email: registerEmail, 
       password: registerPassword, 
-      name: registerName 
+      name: registerName,
+      tenantId: '1'
     });
   };
 
@@ -54,7 +55,7 @@ export default function Login() {
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary shadow-lg">
             <Zap className="h-7 w-7 text-primary-foreground" />
           </div>
-          <span className="text-2xl font-bold text-foreground">SolarApp</span>
+          <span className="text-2xl font-bold text-foreground">EasyPay</span>
         </div>
 
         <Card className="border-border shadow-xl">
@@ -195,11 +196,11 @@ export default function Login() {
               </TabsContent>
             </CardContent>
 
-            <CardFooter className="flex-col gap-4 text-center text-sm text-muted-foreground">
+            {/* <CardFooter className="flex-col gap-4 text-center text-sm text-muted-foreground">
               <p>
                 Demo: admin@example.com / password123
               </p>
-            </CardFooter>
+            </CardFooter> */}
           </Tabs>
         </Card>
       </div>

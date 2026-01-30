@@ -14,25 +14,25 @@ import heroBackground from '@/assets/hero-background.jpg';
 const features = [
   {
     icon: BarChart3,
-    title: 'Analíticas Avanzadas',
-    description: 'Visualiza tus datos en tiempo real con dashboards interactivos.',
+    title: 'Facturacion',
+    description: 'Control de multiples tipos de facturación para los operadores de Taxi.',
   },
   {
     icon: Shield,
-    title: 'Seguridad Empresarial',
-    description: 'Autenticación JWT y protección de datos de nivel empresarial.',
+    title: 'Inventario',
+    description: 'Control de salidas y entradas de productos por Taxi.',
   },
   {
     icon: Zap,
-    title: 'Rendimiento Óptimo',
-    description: 'Arquitectura optimizada para máxima velocidad y eficiencia.',
+    title: 'Mantenimiento',
+    description: 'Generación automaticas de mantenimientos para sus Taxis.',
   },
 ];
 
 const stats = [
   { value: '99.9%', label: 'Uptime' },
-  { value: '10k+', label: 'Usuarios' },
-  { value: '50+', label: 'Países' },
+  { value: '300+', label: 'Vehiculos' },
+  // { value: '50+', label: 'Países' },
   { value: '24/7', label: 'Soporte' },
 ];
 
@@ -46,7 +46,7 @@ export default function Landing() {
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
               <Zap className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground">SolarApp</span>
+            <span className="text-xl font-bold text-foreground">EasyPay</span>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/login">
@@ -70,16 +70,15 @@ export default function Landing() {
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2">
               <CheckCircle className="h-4 w-4 text-primary" />
               <span className="text-sm text-muted-foreground">
-                Arquitectura desacoplada con React + JWT
+                Aplicación para Control de Flota de Taxis
               </span>
             </div>
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
               Potencia tu negocio con{' '}
-              <span className="text-primary">SolarApp</span>
+              <span className="text-primary">EasyPay</span>
             </h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              Plataforma empresarial con autenticación segura, dashboard 
-              interactivo y arquitectura moderna para escalar tu negocio.
+              Plataforma empresarial de Gestion de Flotas de Taxis.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link to="/login">
@@ -101,7 +100,7 @@ export default function Landing() {
       {/* Stats Section */}
       <section className="border-y border-border bg-card py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl font-bold text-primary md:text-4xl">
@@ -124,7 +123,7 @@ export default function Landing() {
               Características Principales
             </h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              Todo lo que necesitas para gestionar tu negocio de manera eficiente.
+              Todo lo que necesitas para gestionar tu flota de Taxis.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
@@ -180,7 +179,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="border-t border-border bg-background py-8">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>© 2026 SolarApp. Todos los derechos reservados.</p>
+          <p>© 2026 BitBug Soluciones. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>

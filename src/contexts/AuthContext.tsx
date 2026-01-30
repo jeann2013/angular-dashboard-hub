@@ -1,4 +1,5 @@
 // Auth Context - Global authentication state management
+// Compatible con OpenTaxi API
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { 
   User, 
@@ -35,8 +36,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         if (storedTokens && storedUser) {
           const parsedTokens = JSON.parse(storedTokens) as AuthTokens;
           
-          // Check if token is still valid
-          if (parsedTokens.expiresAt > Date.now()) {
+          // Check if token is still valid (si expiresAt existe)
+          if (!parsedTokens.expiresAt || parsedTokens.expiresAt > Date.now()) {
             setTokens(parsedTokens);
             setUser(JSON.parse(storedUser));
           } else {
@@ -66,6 +67,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       
       setUser(authUser);
       setTokens(authTokens);
+    } catch (error) {
+      console.error('Login error:', error);
+      throw error;
     } finally {
       setIsLoading(false);
     }
@@ -81,17 +85,25 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       
       setUser(authUser);
       setTokens(authTokens);
+    } catch (error) {
+      console.error('Register error:', error);
+      throw error;
     } finally {
       setIsLoading(false);
     }
   }, []);
 
-  const logout = useCallback(() => {
-    authService.logout();
-    localStorage.removeItem(STORAGE_KEYS.TOKENS);
-    localStorage.removeItem(STORAGE_KEYS.USER);
-    setUser(null);
-    setTokens(null);
+  const logout = useCallback(async () => {
+    try {
+      await authService.logout();
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      localStorage.removeItem(STORAGE_KEYS.TOKENS);
+      localStorage.removeItem(STORAGE_KEYS.USER);
+      setUser(null);
+      setTokens(null);
+    }
   }, []);
 
   const value: AuthContextType = {
