@@ -74,3 +74,180 @@ export interface UpdateCompanyRequest {
   name: string;
   taxId: string;
 }
+
+// Tipos para Operators (CRUD)
+export interface Operator {
+  id: string;
+  operatorNumber: number;
+  firstName: string;
+  lastName: string;
+  nationalId: string;
+  mobilePhone1: string;
+  mobilePhone2?: string;
+  phone1?: string;
+  phone2?: string;
+  assignedUnitNumber?: string;
+  hireDate: string;
+  address?: string;
+  userId: string;
+  photo?: string;
+  birthDate: string;
+  age?: string;
+  status: number;
+  emergencyContactName?: string;
+  emergencyContactRelationship?: string;
+  emergencyContactPhone?: string;
+  referenceUnitNumber?: string;
+  licenseType?: string;
+  licenseExpirationDate: string;
+  maritalStatus?: string;
+  province?: string;
+  chargeSunday: number;
+  term: number;
+}
+
+export interface CreateOperatorRequest {
+  operatorNumber: number;
+  firstName: string;
+  lastName: string;
+  nationalId: string;
+  mobilePhone1: string;
+  mobilePhone2?: string;
+  phone1?: string;
+  phone2?: string;
+  assignedUnitNumber?: string;
+  hireDate: string;
+  address?: string;
+  userId: string;
+  birthDate: string;
+  age?: string;
+  status: number;
+  emergencyContactName?: string;
+  emergencyContactRelationship?: string;
+  emergencyContactPhone?: string;
+  referenceUnitNumber?: string;
+  licenseType?: string;
+  licenseExpirationDate: string;
+  maritalStatus?: string;
+  province?: string;
+  chargeSunday: number;
+  term: number;
+}
+
+export type UpdateOperatorRequest = CreateOperatorRequest;
+
+// ── Deposits ──────────────────────────────────────────────────────────────────
+export interface Deposit {
+  id: string;
+  description: string;
+  status: number;
+}
+
+export interface CreateDepositRequest {
+  description: string;
+  status: number;
+}
+
+export type UpdateDepositRequest = CreateDepositRequest;
+
+// ── Products ──────────────────────────────────────────────────────────────────
+export interface Product {
+  id: string;
+  description: string;
+  unit?: string;
+  secondaryCode?: string;
+  secondaryDescription?: string;
+  reference?: string;
+  classCode: number;
+  brandCode: number;
+  departmentCode: number;
+  manufacturerCode?: string;
+  status: number;
+  cost: number;
+  minimumStock: number;
+  maximumStock: number;
+}
+
+export interface CreateProductRequest {
+  description: string;
+  unit?: string;
+  secondaryCode?: string;
+  secondaryDescription?: string;
+  reference?: string;
+  classCode: number;
+  brandCode: number;
+  departmentCode: number;
+  manufacturerCode?: string;
+  status: number;
+  cost: number;
+  minimumStock: number;
+  maximumStock: number;
+}
+
+export type UpdateProductRequest = CreateProductRequest;
+
+// ── Brands ────────────────────────────────────────────────────────────────────
+export interface Brand {
+  id: string;
+  description: string;
+}
+export interface CreateBrandRequest { description: string; }
+export type UpdateBrandRequest = CreateBrandRequest;
+
+// ── MaintenanceGroups ─────────────────────────────────────────────────────────
+export interface MaintenanceGroup {
+  id: string;
+  description: string;
+}
+export interface CreateMaintenanceGroupRequest { description: string; }
+export type UpdateMaintenanceGroupRequest = CreateMaintenanceGroupRequest;
+
+// ── DailyGroups ───────────────────────────────────────────────────────────────
+export interface DailyGroup {
+  id: string;
+  description: string;
+  monday: number;
+  tuesday: number;
+  wednesday: number;
+  thursday: number;
+  friday: number;
+  saturday: number;
+  sunday: number;
+  specialDay: number;
+}
+export interface CreateDailyGroupRequest {
+  description: string;
+  monday: number;
+  tuesday: number;
+  wednesday: number;
+  thursday: number;
+  friday: number;
+  saturday: number;
+  sunday: number;
+  specialDay: number;
+}
+export type UpdateDailyGroupRequest = CreateDailyGroupRequest;
+
+// ── Suppliers ─────────────────────────────────────────────────────────────────
+export interface Supplier {
+  id: string;
+  name: string;
+  taxId?: string;
+  address?: string;
+  representative?: string;
+  status: number;
+  phone?: string;
+  country?: string;
+  email?: string;
+}
+export interface CreateSupplierRequest {
+  name: string;
+  taxId?: string;
+  address?: string;
+  representative?: string;
+  status: number;
+  phone?: string;
+  country?: string;
+  email?: string;
+}
+export type UpdateSupplierRequest = CreateSupplierRequest;

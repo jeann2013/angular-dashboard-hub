@@ -137,4 +137,4 @@ class ApiService {
   }
 }
 
-export const apiService = new ApiService(`${API_BASE_URL}/api`);
+export const apiService = new ApiService(`${API_BASE_URL}`);

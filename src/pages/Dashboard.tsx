@@ -1,17 +1,24 @@
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  Zap, 
-  LogOut, 
-  BarChart3, 
-  Users, 
-  DollarSign, 
+import {
+  Zap,
+  LogOut,
+  BarChart3,
+  Users,
+  DollarSign,
   Activity,
   TrendingUp,
   ArrowUpRight,
   ArrowDownRight,
-  Calendar
+  UserCog,
+  Banknote,
+  Package,
+  Tag,
+  Wrench,
+  CalendarDays,
+  Truck,
 } from 'lucide-react';
 
 const stats = [
@@ -45,15 +52,10 @@ const stats = [
   },
 ];
 
-const recentActivity = [
-  { id: 1, action: 'Nuevo usuario registrado', time: 'Hace 5 min', user: 'Carlos López' },
-  { id: 2, action: 'Venta completada', time: 'Hace 15 min', user: 'María García' },
-  { id: 3, action: 'Reporte generado', time: 'Hace 1 hora', user: 'Sistema' },
-  { id: 4, action: 'Configuración actualizada', time: 'Hace 2 horas', user: 'Admin' },
-];
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background">
@@ -121,74 +123,41 @@ export default function Dashboard() {
           ))}
         </div>
 
-        {/* Charts and Activity */}
-        <div className="grid gap-6 lg:grid-cols-7">
-          {/* Chart Placeholder */}
-          <Card className="lg:col-span-4">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-primary" />
-                Resumen de Ventas
-              </CardTitle>
-              <CardDescription>
-                Ingresos mensuales del último año
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex h-[300px] items-center justify-center rounded-lg border border-dashed border-border bg-muted/30">
-                <div className="text-center">
-                  <BarChart3 className="mx-auto h-12 w-12 text-muted-foreground" />
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Gráfico de ventas - Integrar con Recharts
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Recent Activity */}
-          <Card className="lg:col-span-3">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-primary" />
-                Actividad Reciente
-              </CardTitle>
-              <CardDescription>
-                Últimos eventos en la plataforma
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {recentActivity.map((activity) => (
-                  <div
-                    key={activity.id}
-                    className="flex items-start gap-3 rounded-lg border border-border bg-card p-3 transition-colors hover:bg-muted/50"
-                  >
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                      <Activity className="h-4 w-4 text-primary" />
-                    </div>
-                    <div className="flex-1 overflow-hidden">
-                      <p className="truncate text-sm font-medium text-foreground">
-                        {activity.action}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {activity.user} • {activity.time}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
         {/* Quick Actions */}
-        <div className="mt-8">
+        <div className="mb-8">
           <h2 className="mb-4 text-lg font-semibold text-foreground">Acciones Rápidas</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Button variant="outline" className="h-auto flex-col gap-2 py-4">
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/companies')}>
               <Users className="h-5 w-5" />
-              <span>Gestionar Usuarios</span>
+              <span>Compañías</span>
+            </Button>
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/operators')}>
+              <UserCog className="h-5 w-5" />
+              <span>Operadores</span>
+            </Button>
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/deposits')}>
+              <Banknote className="h-5 w-5" />
+              <span>Depósitos</span>
+            </Button>
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/products')}>
+              <Package className="h-5 w-5" />
+              <span>Productos</span>
+            </Button>
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/brands')}>
+              <Tag className="h-5 w-5" />
+              <span>Marcas</span>
+            </Button>
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/maintenance-groups')}>
+              <Wrench className="h-5 w-5" />
+              <span>Grupos Mantenimiento</span>
+            </Button>
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/daily-groups')}>
+              <CalendarDays className="h-5 w-5" />
+              <span>Grupos Diarios</span>
+            </Button>
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/suppliers')}>
+              <Truck className="h-5 w-5" />
+              <span>Proveedores</span>
             </Button>
             <Button variant="outline" className="h-auto flex-col gap-2 py-4">
               <BarChart3 className="h-5 w-5" />
@@ -204,6 +173,29 @@ export default function Dashboard() {
             </Button>
           </div>
         </div>
+
+        {/* Chart */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-primary" />
+              Resumen de Ventas
+            </CardTitle>
+            <CardDescription>
+              Ingresos mensuales del último año
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex h-[300px] items-center justify-center rounded-lg border border-dashed border-border bg-muted/30">
+              <div className="text-center">
+                <BarChart3 className="mx-auto h-12 w-12 text-muted-foreground" />
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Gráfico de ventas - Integrar con Recharts
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );
