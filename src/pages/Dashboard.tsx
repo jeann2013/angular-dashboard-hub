@@ -19,6 +19,7 @@ import {
   Wrench,
   CalendarDays,
   Truck,
+  Car,
 } from 'lucide-react';
 
 const stats = [
@@ -127,6 +128,10 @@ export default function Dashboard() {
         <div className="mb-8">
           <h2 className="mb-4 text-lg font-semibold text-foreground">Acciones Rápidas</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/vehicles')}>
+              <Car className="h-5 w-5" />
+              <span>Vehículos</span>
+            </Button>
             <Button variant="outline" className="h-auto flex-col gap-2 py-4" onClick={() => navigate('/companies')}>
               <Users className="h-5 w-5" />
               <span>Compañías</span>

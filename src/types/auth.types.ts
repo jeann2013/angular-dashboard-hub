@@ -251,3 +251,71 @@ export interface CreateSupplierRequest {
   email?: string;
 }
 export type UpdateSupplierRequest = CreateSupplierRequest;
+
+// ── Vehicles ──────────────────────────────────────────────────────────────────
+export interface Vehicle {
+  id: string;
+  unitNumber: string;
+  companyCode: number;
+  licensePlate: string;
+  year?: string;
+  brand?: string;
+  model?: string;
+  chassisNumber?: string;
+  engineSerial?: string;
+  quotaNumber?: string;
+  quotaDate: string;
+  policyNumber?: string;
+  policyDate: string;
+  purchaseDate: string;
+  inspectionDate: string;
+  assignedTechnician?: string;
+  status: number;
+  gpsNumber?: string;
+  radioNumber?: string;
+  date: string;
+  maintenanceGroupId: string;
+  maintenanceGroupDescription?: string;
+  dailyGroupId: string;
+  dailyGroupDescription?: string;
+  dailyAmount: number;
+  mileage: number;
+  operatorNumber?: number;
+  financed: number;
+  ignitionStatus?: string;
+  charge: number;
+  installments: number;
+}
+
+export interface CreateVehicleRequest {
+  unitNumber: string;
+  companyCode: number;
+  licensePlate: string;
+  year?: string;
+  brand?: string;
+  model?: string;
+  chassisNumber?: string;
+  engineSerial?: string;
+  quotaNumber?: string;
+  quotaDate: string;
+  policyNumber?: string;
+  policyDate: string;
+  purchaseDate: string;
+  inspectionDate: string;
+  assignedTechnician?: string;
+  status: number;
+  gpsNumber?: string;
+  radioNumber?: string;
+  date: string;
+  maintenanceGroupId: string;
+  dailyGroupId: string;
+  dailyAmount: number;
+  mileage: number;
+  operatorNumber?: number | null;
+  financed: number;
+  ignitionStatus?: string;
+  charge: number;
+  installments: number;
+}
+
+export type UpdateVehicleRequest = CreateVehicleRequest;

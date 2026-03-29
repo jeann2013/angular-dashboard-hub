@@ -16,6 +16,7 @@ import Brands from "./pages/Brands";
 import MaintenanceGroups from "./pages/MaintenanceGroups";
 import DailyGroups from "./pages/DailyGroups";
 import Suppliers from "./pages/Suppliers";
+import Vehicles from "./pages/Vehicles";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -75,6 +76,7 @@ const App = () => (
             <Route path="/maintenance-groups" element={<ProtectedRoute><MaintenanceGroups /></ProtectedRoute>} />
             <Route path="/daily-groups" element={<ProtectedRoute><DailyGroups /></ProtectedRoute>} />
             <Route path="/suppliers" element={<ProtectedRoute><Suppliers /></ProtectedRoute>} />
+            <Route path="/vehicles" element={<ProtectedRoute><Vehicles /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
